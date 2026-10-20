@@ -24,29 +24,37 @@ Tidak ada perbaikan kode tambahan yang diperlukan setelah pengujian. Fitur berha
 
 **Prompt:**
 
-Belum dikerjakan.
+Baca docs/user-stories.md bagian US-02. Ubah app/produk/[id]/page.jsx supaya mengambil satu produk dari tabel "produk" di Supabase berdasarkan id di URL, di sisi server, memakai koneksi Supabase yang sudah dibuat di lib/supabase. Kalau produk tidak ditemukan, panggil notFound(). Jangan ubah tampilannya. Hapus CatatanBelumAktif dari halaman ini, tapi biarkan tombol WhatsApp.
 
 **Hasil:**
 
-Belum diuji.
+- Agent mengubah halaman `app/produk/[id]/page.jsx` untuk mengambil detail produk berdasarkan ID dari URL.
+- Halaman detail berhasil menampilkan data produk dari Supabase.
+- Pengujian berhasil: deskripsi produk diubah melalui Supabase, kemudian perubahan tampil di halaman detail setelah dimuat ulang.
+- Pengujian ID yang tidak ditemukan berhasil: ketika membuka `http://localhost:3000/produk/9999`, muncul halaman "Halaman tidak ditemukan".
+- Kesimpulan: halaman detail berhasil mengambil data produk dari database dan menangani produk yang tidak ditemukan.
 
 **Perbaikan:**
 
-Belum ada.
+Tidak ada perbaikan kode tambahan yang diperlukan setelah pengujian. Kedua pengujian berhasil.
 
 ## US-03 Pesan via WhatsApp
 
 **Prompt:**
 
-Belum dikerjakan.
+Baca docs/rancangan-teknis.md bagian "Pesan WhatsApp (US-03)". Ubah components/TombolWhatsApp.jsx menjadi tautan yang membuka https://wa.me/ ke nomor di lib/toko.js, dengan pesan otomatis berisi nama dan harga produk dalam format rupiah. Pesan di-encode dengan encodeURIComponent dan dibuka di tab baru. Pertahankan tampilan tombolnya. Hapus CatatanBelumAktif yang menyebut US-03 di halaman detail produk.
 
 **Hasil:**
 
-Belum diuji.
+- Agent mengubah `components/TombolWhatsApp.jsx` untuk membuat tombol pemesanan melalui WhatsApp.
+- Tombol berhasil membuka WhatsApp dengan nomor tujuan toko yang sesuai.
+- Pesan otomatis berhasil terisi dengan nama produk dan harga dalam format rupiah.
+- Pengujian berhasil menggunakan produk "Kopi Spesial 250 g" dengan harga Rp 45.000.
+- Kesimpulan: tombol WhatsApp berhasil menyiapkan pesan pemesanan secara otomatis.
 
 **Perbaikan:**
 
-Belum ada.
+Tidak ada perbaikan kode tambahan yang diperlukan setelah pengujian. Tombol dan pesan otomatis berfungsi sesuai harapan.
 
 ## US-04 Login admin
 
@@ -100,12 +108,26 @@ Perintah `git push` awalnya gagal dengan pesan `Invalid username or token. Passw
 
 **Perbaikan:**
 
-Menjalankan `git config --global credential.helper manager`, kemudian mengulangi `git push` dan menyelesaikan autentikasi melalui browser.
+Menjalankan perintah `git config --global credential.helper manager`, kemudian mengulangi `git push` dan menyelesaikan autentikasi melalui browser.
 
 **Hasil:**
 
 Perubahan berhasil dikirim ke branch `main` di GitHub.
 
-**Fitur bonus:**
+### Debugging 2 — Peringatan format baris Git di Windows
+
+**Masalah:**
+
+Saat menjalankan `git add .`, Git menampilkan peringatan bahwa format baris `LF` akan diubah menjadi `CRLF` pada file `app/produk/[id]/page.jsx` dan `components/TombolWhatsApp.jsx`.
+
+**Perbaikan:**
+
+Tidak diperlukan perbaikan khusus karena pesan tersebut merupakan peringatan perbedaan format akhir baris file, bukan error yang menghentikan perintah Git.
+
+**Hasil:**
+
+Perintah `git add .` dapat dilanjutkan.
+
+### Fitur bonus
 
 Belum ada.
