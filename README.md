@@ -1,80 +1,155 @@
-# Katalog UMKM + Order WhatsApp
+# Trail & Tale — Katalog UMKM + Order WhatsApp
 
-Template workshop vibe coding Creative Hub App Talent (CHAT) 2026. Repo ini berisi tampilan aplikasi katalog UMKM; tugasmu merangkainya menjadi sistem utuh dengan bantuan AI: database, login admin, keamanan, dan pemesanan lewat WhatsApp.
+Aplikasi katalog produk untuk usaha **Trail & Tale**, bertema outdoor lifestyle. Proyek ini dikembangkan sebagai bagian dari workshop *Vibe Coding Creative Hub App Talent (CHAT) 2026* dengan bantuan AI.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fandixurniawan%2Fkatalog-umkm&project-name=katalog-umkm&repository-name=katalog-umkm)
+Aplikasi menggunakan Next.js dan Supabase untuk menampilkan katalog produk dari database, menyediakan halaman detail produk, serta memudahkan pelanggan melakukan pemesanan melalui WhatsApp.
 
-## Langkah awal
+## Tentang Aplikasi
 
-1. **Salin repo ke akun GitHub-mu.** Klik tombol **Deploy with Vercel** di atas. Vercel akan membuat repo baru di akun GitHub-mu dan langsung men-deploy-nya. Setelah selesai, buka link Vercel-mu: katalog tampil dengan data contoh.
-2. **Buat proyek Supabase.** Masuk ke [supabase.com](https://supabase.com) dengan akun GitHub, lalu buat proyek baru. Simpan password database di tempat aman.
-3. **Siapkan database.** Di Supabase, buka **SQL Editor**, tempel seluruh isi `docs/schema.sql`, lalu klik **Run**. Tabel `produk` beserta data awal akan terbentuk.
-4. **Siapkan akun admin.** Ikuti panduan akun admin yang dibagikan mentor. Setelah itu matikan pendaftaran akun baru di **Authentication > Sign In / Providers**.
-5. **Isi environment variable di Vercel.** Buka proyekmu di Vercel > **Settings > Environment Variables**, lalu isi tiga variabel dari `.env.example`. Nilainya ada di Supabase > **Project Settings > API**. Setelah itu lakukan **Redeploy**.
-6. **Clone repo ke laptop.**
+- **Nama usaha:** Trail & Tale
+- **Pembuat:** Rizka Fatikarani
+- **Program:** Workshop CHAT 2026 — Tutorial Development Katalog UMKM
+- **Link aplikasi:** https://katalog-umkm-rizka.vercel.app/
+- **Repository GitHub:** https://github.com/rizkafatikarani/katalog-umkm-rizka
+- **Nomor WhatsApp pemesanan:** 081293077039
 
-   ```bash
-   git clone https://github.com/<akunmu>/<nama-repo>.git
-   cd <nama-repo>
-   npm install
-   ```
+## Fitur Aplikasi
 
-7. **Buat file `.env.local`.** Salin `.env.example` menjadi `.env.local`, lalu isi dengan nilai yang sama seperti di Vercel.
-8. **Jalankan di laptop.**
+### Fitur pelanggan
+- Menampilkan katalog produk dari database Supabase.
+- Menampilkan detail produk berdasarkan data dari database.
+- Menampilkan informasi produk, termasuk nama dan harga.
+- Menyediakan tombol pemesanan melalui WhatsApp.
+- Mengirim informasi nama produk dan harga ke WhatsApp untuk memudahkan pemesanan.
+- Menampilkan halaman yang sesuai ketika produk tidak ditemukan.
 
-   ```bash
-   npm run dev
-   ```
+### Fitur admin
+- Login admin menggunakan Supabase Authentication.
+- Logout dari akun admin.
+- Mengganti password akun admin.
+- Proteksi halaman admin agar tidak dapat diakses tanpa autentikasi.
 
-   Buka `http://localhost:3000`.
+### Fitur tambahan
+Fokus pengembangan proyek ini adalah menyelesaikan enam user story utama, yaitu US-01 sampai US-06, yang mencakup katalog database, detail produk, pemesanan WhatsApp, login admin, penggantian password, dan proteksi halaman admin.
 
-## Alur kerja
+## Teknologi yang Digunakan
 
-Kerjakan satu user story setiap kali, lalu simpan dan kirim perubahan:
+- **Next.js** — framework aplikasi web.
+- **React** — membangun antarmuka pengguna.
+- **Supabase Database** — menyimpan data produk.
+- **Supabase Authentication** — autentikasi akun admin.
+- **WhatsApp** — media komunikasi untuk pemesanan.
+- **Git dan GitHub** — version control dan penyimpanan kode.
+- **Vercel** — deployment aplikasi.
+
+## Struktur Proyek
+
+| File atau folder | Keterangan |
+|---|---|
+| `app/` | Halaman aplikasi dan halaman admin |
+| `app/admin/` | Halaman dan fitur administrasi |
+| `components/` | Komponen antarmuka aplikasi |
+| `lib/toko.js` | Konfigurasi identitas toko, kontak, alamat, dan jam operasional |
+| `lib/supabase/` | Konfigurasi koneksi Supabase |
+| `docs/` | Dokumentasi, skema database, user story, dan checklist |
+| `PROMPTS.md` | Jurnal prompt dan proses pengembangan dengan AI |
+| `.env.example` | Contoh konfigurasi environment variable |
+| `.env.local` | Konfigurasi lokal yang tidak boleh diunggah ke GitHub |
+
+## Menjalankan Aplikasi Secara Lokal
+
+### 1. Persyaratan
+
+Pastikan perangkat sudah memiliki:
+- Node.js
+- npm
+- Git
+
+### 2. Clone repository
+
+Jalankan perintah berikut di terminal:
 
 ```bash
-git add .
-git commit -m "US-01: katalog dari database"
-git push
+git clone https://github.com/rizkafatikarani/katalog-umkm-rizka.git
+cd katalog-umkm-rizka
 ```
 
-Setiap `git push`, Vercel otomatis men-deploy versi terbaru. Cek hasilnya di link Vercel-mu.
+### 3. Install dependencies
 
-Urutan yang disarankan: US-01, US-02, US-03, US-04, US-05, US-06, lalu fitur bonus. Daftar lengkap ada di `docs/user-stories.md`.
+```bash
+npm install
+```
 
-## Isi repo
+### 4. Konfigurasi environment variable
 
-| File atau folder | Isi |
-| --- | --- |
-| `AGENTS.md` | Aturan untuk AI agent, dibaca sebelum setiap prompt |
-| `DESIGN.md` | Panduan warna, huruf, dan komponen |
-| `PROMPTS.md` | Jurnal prompt, wajib diisi |
-| `docs/` | Problem statement, PRD, user story, rancangan teknis, skema database, checklist |
-| `lib/toko.js` | Nama toko, nomor WhatsApp, alamat, jam buka |
-| `app/` | Halaman aplikasi |
-| `components/` | Komponen tampilan |
+Salin file `.env.example` menjadi `.env.local`, kemudian isi menggunakan konfigurasi proyek Supabase milikmu.
 
-## Menyesuaikan dengan usahamu
+Pastikan nama variabel sesuai dengan yang digunakan aplikasi:
 
-- Identitas toko: ubah `lib/toko.js`.
-- Warna: ubah bagian `@theme` di `app/globals.css` (lihat `DESIGN.md`).
-- Produk: ubah langsung di Supabase > **Table Editor > produk**.
+```env
+SUPABASE_URL=
+SUPABASE_PUBLISHABLE_KEY=
+SUPABASE_SECRET_KEY=
+```
 
-## Aturan penting
+Isi nilainya secara lokal menggunakan kredensial dari Supabase. Jangan mengisi nilai rahasia ke dalam README atau mengunggah file `.env.local` ke GitHub.
 
-- Jangan menyimpan kunci atau password di kode, dan jangan push file `.env.local`.
-- Jangan memberi awalan `NEXT_PUBLIC_` pada environment variable.
-- Isi `PROMPTS.md` setiap menyelesaikan fitur.
+**Penting:** `SUPABASE_SECRET_KEY` hanya boleh digunakan di lingkungan server dan tidak boleh diekspos ke browser.
 
-## Sebelum mengumpulkan
+### 5. Jalankan aplikasi
 
-1. Jalankan semua poin di `docs/checklist-keamanan.md` dan `docs/checklist-pengujian.md` pada link Vercel.
-2. Lengkapi bagian di bawah ini.
-3. Push perubahan terakhir sebelum batas waktu.
+```bash
+npm run dev
+```
 
-## Tentang aplikasi ini
+Buka alamat berikut di browser:
 
-- **Nama usaha:**
-- **Pembuat:**
-- **Link aplikasi:**
-- **Fitur bonus yang dikerjakan:**
+http://localhost:3000
+
+## Konfigurasi Toko
+
+Pengaturan identitas toko dapat disesuaikan melalui file `lib/toko.js`.
+
+Informasi yang dapat dikonfigurasi antara lain:
+- Nama dan deskripsi toko.
+- Nomor WhatsApp pemesanan.
+- Alamat toko.
+- Jam operasional.
+
+Nomor WhatsApp yang digunakan untuk pemesanan adalah **081293077039**. Untuk tautan WhatsApp, nomor tersebut menggunakan format internasional tanpa angka `0` di awal, yaitu `6281293077039`.
+
+## Database dan Autentikasi
+
+Aplikasi menggunakan Supabase untuk menyimpan data produk dan mengelola autentikasi admin.
+
+Data produk dikelola melalui **Supabase Dashboard → Table Editor → `produk`**.
+
+Akun admin dibuat melalui Supabase Authentication. Pendaftaran akun publik sebaiknya dinonaktifkan apabila aplikasi hanya ditujukan untuk admin yang telah dibuat.
+
+## Deployment
+
+Aplikasi di-deploy menggunakan Vercel dan terhubung dengan repository GitHub.
+
+- **Website:** https://katalog-umkm-rizka.vercel.app/
+- **Repository:** https://github.com/rizkafatikarani/katalog-umkm-rizka
+
+Setiap perubahan yang sudah di-commit dan di-push ke branch utama dapat memicu deployment otomatis melalui Vercel.
+
+## Keamanan
+
+- Jangan mengunggah file `.env.local` ke GitHub.
+- Jangan menaruh secret key atau password di dalam kode frontend.
+- Jangan menggunakan awalan `NEXT_PUBLIC_` untuk secret key.
+- Pastikan halaman admin hanya dapat diakses oleh pengguna yang terautentikasi.
+- Pastikan konfigurasi environment variable di Vercel sudah benar.
+- Periksa checklist keamanan dan checklist pengujian sebelum mengumpulkan proyek.
+
+## Dokumentasi Pengembangan
+
+Dokumentasi pendukung proyek tersedia di folder `docs/`, termasuk user story, rancangan teknis, skema database, dan checklist pengujian.
+
+Jurnal pengembangan menggunakan AI dicatat di `PROMPTS.md`.
+
+---
+
+*Trail & Tale — Temukan perlengkapan untuk setiap petualangan.*
